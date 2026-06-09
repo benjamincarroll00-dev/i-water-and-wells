@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I Water and Wells Inc. — Pure Water, Deep Expertise</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep: #041e35;
+    --ocean: #0d5c8e;
+    --sky: #1a8fc1;
+    --aqua: #4ec9e1;
+    --foam: #d6f0f7;
+    --white: #f8fbfd;
+    --text: #1a2a38;
+    --muted: #5a7a90;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--white);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(4, 30, 53, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(78,201,225,0.15);
+  }
+
+  .nav-logo {
+    display: flex; align-items: center; gap: 0.75rem;
+    text-decoration: none;
+  }
+  .nav-logo-icon {
+    width: 38px; height: 38px;
+    background: linear-gradient(135deg, var(--sky), var(--aqua));
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+  }
+  .nav-logo-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.25rem; font-weight: 700;
+    color: var(--white); letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .nav-logo-text span { color: var(--aqua); }
+
+  .nav-links {
+    display: flex; align-items: center; gap: 2.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    color: rgba(248,251,253,0.75);
+    text-decoration: none; font-size: 0.9rem; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--aqua); }
+
+  .nav-cta {
+    background: var(--sky); color: var(--white) !important;
+    padding: 0.55rem 1.4rem; border-radius: 2px;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--aqua) !important; color: var(--deep) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--deep);
+    position: relative; overflow: hidden;
+    display: flex; align-items: center;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 60% 40%, rgba(13,92,142,0.45) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 80% at 80% 80%, rgba(26,143,193,0.2) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 40% at 20% 20%, rgba(78,201,225,0.1) 0%, transparent 60%);
+  }
+
+  /* animated water ripples */
+  .ripple {
+    position: absolute; border-radius: 50%;
+    border: 1px solid rgba(78,201,225,0.15);
+    animation: ripple-out 6s ease-out infinite;
+  }
+  .ripple:nth-child(1) { width: 300px; height: 300px; top: 30%; right: 15%; animation-delay: 0s; }
+  .ripple:nth-child(2) { width: 500px; height: 500px; top: 20%; right: 10%; animation-delay: 1.5s; }
+  .ripple:nth-child(3) { width: 700px; height: 700px; top: 10%; right: 5%; animation-delay: 3s; }
+
+  @keyframes ripple-out {
+    0% { opacity: 0.6; transform: scale(0.8); }
+    100% { opacity: 0; transform: scale(1.1); }
+  }
+
+  /* water drop particles */
+  .drops { position: absolute; inset: 0; pointer-events: none; }
+  .drop {
+    position: absolute; width: 2px; height: 2px;
+    background: var(--aqua); border-radius: 50%;
+    animation: float-up linear infinite; opacity: 0;
+  }
+  @keyframes float-up {
+    0% { transform: translateY(100vh); opacity: 0; }
+    10% { opacity: 0.6; }
+    90% { opacity: 0.2; }
+    100% { transform: translateY(-10vh); opacity: 0; }
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    padding: 0 4rem;
+    max-width: 700px;
+    animation: fade-up 1s ease both;
+  }
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-tag {
+    display: inline-block;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.8rem; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--aqua);
+    border: 1px solid rgba(78,201,225,0.4);
+    padding: 0.35rem 1rem; border-radius: 2px;
+    margin-bottom: 1.5rem;
+    animation: fade-up 1s ease 0.1s both;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 900; line-height: 1.05;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+    animation: fade-up 1s ease 0.2s both;
+  }
+
+  .hero h1 em {
+    font-style: italic; color: var(--aqua);
+    display: block;
+  }
+
+  .hero p {
+    font-size: 1.1rem; font-weight: 300; line-height: 1.8;
+    color: rgba(248,251,253,0.7);
+    max-width: 520px;
+    margin-bottom: 2.5rem;
+    animation: fade-up 1s ease 0.3s both;
+  }
+
+  .hero-actions {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    animation: fade-up 1s ease 0.4s both;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--sky), var(--aqua));
+    color: var(--deep); font-weight: 600; font-size: 0.9rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 1rem 2.2rem; border-radius: 2px;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(26,143,193,0.4);
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(26,143,193,0.5);
+  }
+
+  .btn-outline {
+    border: 1px solid rgba(78,201,225,0.4); color: var(--white);
+    font-weight: 500; font-size: 0.9rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 1rem 2.2rem; border-radius: 2px;
+    text-decoration: none; background: transparent;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .btn-outline:hover {
+    border-color: var(--aqua);
+    background: rgba(78,201,225,0.08);
+  }
+
+  .hero-stats {
+    position: absolute; bottom: 3rem; right: 4rem; z-index: 2;
+    display: flex; gap: 3rem;
+    animation: fade-up 1s ease 0.6s both;
+  }
+  .stat { text-align: right; }
+  .stat-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 2.2rem; font-weight: 700;
+    color: var(--aqua); line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(248,251,253,0.5); margin-top: 0.25rem;
+  }
+
+  /* scroll indicator */
+  .scroll-hint {
+    position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    color: rgba(248,251,253,0.35); font-size: 0.7rem; letter-spacing: 0.15em;
+    text-transform: uppercase; animation: bob 2s ease-in-out infinite;
+  }
+  .scroll-hint::after {
+    content: ''; display: block;
+    width: 1px; height: 40px;
+    background: linear-gradient(to bottom, rgba(78,201,225,0.5), transparent);
+  }
+  @keyframes bob {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(6px); }
+  }
+
+  /* ── SERVICES ── */
+  .services {
+    padding: 7rem 4rem;
+    background: var(--white);
+  }
+
+  .section-header {
+    text-align: center; margin-bottom: 4rem;
+  }
+  .section-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--sky);
+    margin-bottom: 0.75rem; display: block;
+  }
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem); font-weight: 700;
+    color: var(--deep); line-height: 1.2;
+  }
+  .section-header h2 em { font-style: italic; color: var(--ocean); }
+  .section-divider {
+    width: 60px; height: 2px;
+    background: linear-gradient(to right, var(--sky), var(--aqua));
+    margin: 1.25rem auto 0;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px; margin: 0 auto;
+  }
+
+  .service-card {
+    background: var(--white);
+    border: 1px solid rgba(13,92,142,0.1);
+    border-radius: 4px; padding: 2.5rem;
+    position: relative; overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    cursor: default;
+  }
+  .service-card::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(to right, var(--sky), var(--aqua));
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(13,92,142,0.12);
+    border-color: rgba(13,92,142,0.2);
+  }
+  .service-card:hover::before { transform: scaleX(1); }
+
+  .service-icon {
+    font-size: 2.2rem; margin-bottom: 1.25rem;
+    display: block;
+  }
+  .service-card h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.25rem; font-weight: 700;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    color: var(--deep); margin-bottom: 0.75rem;
+  }
+  .service-card p {
+    font-size: 0.92rem; line-height: 1.75;
+    color: var(--muted);
+  }
+
+  /* ── WHY US ── */
+  .why {
+    padding: 7rem 4rem;
+    background: var(--deep);
+    position: relative; overflow: hidden;
+  }
+  .why-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 60% at 90% 50%, rgba(13,92,142,0.3) 0%, transparent 70%);
+  }
+  .why-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem;
+    align-items: center; position: relative; z-index: 1;
+  }
+  .why-left .section-header { text-align: left; }
+  .why-left .section-divider { margin-left: 0; }
+  .why-left h2, .why-left .section-tag { color: var(--white); }
+  .why-left h2 em { color: var(--aqua); }
+  .why-left .section-tag { color: var(--aqua); opacity: 0.8; }
+  .why-desc {
+    font-size: 1rem; line-height: 1.85; font-weight: 300;
+    color: rgba(248,251,253,0.65); margin-top: 1.5rem;
+  }
+  .why-cta { margin-top: 2.5rem; }
+
+  .why-list { list-style: none; display: flex; flex-direction: column; gap: 1.25rem; }
+  .why-item {
+    display: flex; gap: 1.25rem; align-items: flex-start;
+    padding: 1.5rem;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(78,201,225,0.1);
+    border-radius: 4px;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .why-item:hover {
+    background: rgba(78,201,225,0.06);
+    border-color: rgba(78,201,225,0.2);
+  }
+  .why-item-icon {
+    width: 42px; height: 42px; flex-shrink: 0;
+    background: linear-gradient(135deg, rgba(26,143,193,0.3), rgba(78,201,225,0.2));
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+  }
+  .why-item-text h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem; font-weight: 700; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--white); margin-bottom: 0.3rem;
+  }
+  .why-item-text p {
+    font-size: 0.88rem; line-height: 1.7;
+    color: rgba(248,251,253,0.5);
+  }
+
+  /* ── PROCESS ── */
+  .process {
+    padding: 7rem 4rem;
+    background: #f0f7fc;
+  }
+  .process-steps {
+    max-width: 900px; margin: 0 auto;
+    display: flex; flex-direction: column; gap: 0;
+    position: relative;
+  }
+  .process-steps::before {
+    content: ''; position: absolute;
+    left: 24px; top: 0; bottom: 0; width: 2px;
+    background: linear-gradient(to bottom, var(--sky), var(--aqua));
+  }
+  .process-step {
+    display: flex; gap: 2rem; align-items: flex-start;
+    padding: 2rem 0 2rem 0;
+    position: relative;
+  }
+  .step-num {
+    width: 50px; height: 50px; flex-shrink: 0;
+    background: var(--deep); color: var(--aqua);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.1rem; font-weight: 700;
+    position: relative; z-index: 1;
+    border: 2px solid var(--sky);
+  }
+  .step-body h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.15rem; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--deep); margin-bottom: 0.5rem; margin-top: 0.6rem;
+  }
+  .step-body p {
+    font-size: 0.93rem; line-height: 1.75; color: var(--muted);
+  }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials {
+    padding: 7rem 4rem;
+    background: var(--white);
+  }
+  .testimonials-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem; max-width: 1100px; margin: 0 auto;
+  }
+  .testimonial-card {
+    padding: 2.5rem;
+    border: 1px solid rgba(13,92,142,0.1);
+    border-radius: 4px;
+    position: relative;
+    transition: box-shadow 0.3s;
+  }
+  .testimonial-card:hover {
+    box-shadow: 0 10px 40px rgba(13,92,142,0.08);
+  }
+  .quote-mark {
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem; line-height: 1;
+    color: var(--foam); position: absolute;
+    top: 1rem; left: 1.5rem;
+  }
+  .testimonial-text {
+    font-size: 0.95rem; line-height: 1.8;
+    color: var(--text); margin-bottom: 1.5rem;
+    position: relative; z-index: 1; margin-top: 1.5rem;
+  }
+  .testimonial-author {
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .author-avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--ocean), var(--sky));
+    display: flex; align-items: center; justify-content: center;
+    color: var(--white); font-weight: 700; font-size: 0.9rem;
+  }
+  .author-name {
+    font-weight: 600; font-size: 0.9rem; color: var(--deep);
+  }
+  .author-location {
+    font-size: 0.8rem; color: var(--muted);
+  }
+  .stars { color: #f5b731; font-size: 0.85rem; margin-bottom: 0.75rem; }
+
+  /* ── CONTACT ── */
+  .contact {
+    padding: 7rem 4rem;
+    background: var(--deep);
+    position: relative; overflow: hidden;
+  }
+  .contact-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 50% 80% at 20% 50%, rgba(13,92,142,0.4) 0%, transparent 70%);
+  }
+  .contact-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1.2fr; gap: 6rem;
+    align-items: start; position: relative; z-index: 1;
+  }
+  .contact-info .section-header { text-align: left; }
+  .contact-info .section-divider { margin-left: 0; }
+  .contact-info h2, .contact-info .section-tag { color: var(--white); }
+  .contact-info h2 em { color: var(--aqua); }
+  .contact-info .section-tag { color: rgba(78,201,225,0.8); }
+
+  .contact-details {
+    margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1.25rem;
+  }
+  .contact-item {
+    display: flex; gap: 1rem; align-items: center;
+  }
+  .contact-item-icon {
+    width: 38px; height: 38px; flex-shrink: 0;
+    background: rgba(78,201,225,0.1);
+    border: 1px solid rgba(78,201,225,0.2);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+  }
+  .contact-item span {
+    color: rgba(248,251,253,0.7); font-size: 0.95rem;
+  }
+  .contact-item a {
+    color: var(--aqua); text-decoration: none;
+    font-size: 0.95rem; font-weight: 500;
+  }
+  .contact-item a:hover { text-decoration: underline; }
+
+  .contact-form {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(78,201,225,0.12);
+    border-radius: 6px; padding: 2.5rem;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+  .form-group label {
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: rgba(248,251,253,0.5);
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(78,201,225,0.15);
+    border-radius: 3px; padding: 0.85rem 1rem;
+    color: var(--white); font-family: 'Barlow', sans-serif;
+    font-size: 0.92rem;
+    transition: border-color 0.2s, background 0.2s;
+    outline: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--aqua);
+    background: rgba(78,201,225,0.08);
+  }
+  .form-group select option { background: var(--deep); }
+  .form-group textarea { resize: vertical; min-height: 110px; }
+  .form-submit {
+    width: 100%; margin-top: 0.5rem;
+    background: linear-gradient(135deg, var(--sky), var(--aqua));
+    border: none; border-radius: 3px;
+    color: var(--deep); font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; padding: 1.1rem;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.2s;
+    box-shadow: 0 4px 20px rgba(26,143,193,0.35);
+  }
+  .form-submit:hover { opacity: 0.9; transform: translateY(-1px); }
+
+  /* ── MOBILE MENU ── */
+  .hamburger {
+    display: none; flex-direction: column; gap: 5px;
+    background: none; border: none; cursor: pointer; padding: 4px;
+  }
+  .hamburger span {
+    display: block; width: 24px; height: 2px;
+    background: var(--white); border-radius: 2px;
+    transition: all 0.3s;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .mobile-menu {
+    display: none; position: fixed;
+    top: 65px; left: 0; right: 0;
+    background: rgba(4,30,53,0.98);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(78,201,225,0.15);
+    padding: 1.5rem 2rem;
+    flex-direction: column; gap: 0; z-index: 99;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    color: rgba(248,251,253,0.8); text-decoration: none;
+    font-size: 1rem; font-weight: 500; letter-spacing: 0.06em;
+    text-transform: uppercase; padding: 1rem 0;
+    border-bottom: 1px solid rgba(78,201,225,0.08);
+    transition: color 0.2s;
+  }
+  .mobile-menu a:hover { color: var(--aqua); }
+  .mobile-menu a.mobile-cta {
+    margin-top: 1rem; text-align: center;
+    background: var(--sky); color: var(--white);
+    padding: 1rem; border-radius: 3px; border: none;
+  }
+
+  /* ── SHOP ── */
+  .shop {
+    padding: 7rem 4rem;
+    background: #f0f7fc;
+  }
+  .shop-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px; margin: 0 auto;
+  }
+  .shop-card {
+    background: var(--white);
+    border: 1px solid rgba(13,92,142,0.1);
+    border-radius: 6px; overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .shop-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(13,92,142,0.12);
+  }
+  .shop-card-image {
+    height: 180px;
+    background: linear-gradient(135deg, var(--deep), var(--ocean));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 3.5rem; position: relative; overflow: hidden;
+  }
+  .shop-card-image::after {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 70% 30%, rgba(78,201,225,0.2), transparent 70%);
+  }
+  .shop-card-badge {
+    position: absolute; top: 1rem; right: 1rem;
+    background: var(--aqua); color: var(--deep);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.25rem 0.6rem; border-radius: 2px;
+    z-index: 1;
+  }
+  .shop-card-body { padding: 1.5rem; }
+  .shop-card-category {
+    font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--sky); margin-bottom: 0.4rem;
+  }
+  .shop-card-body h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.15rem; font-weight: 700;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    color: var(--deep); margin-bottom: 0.5rem;
+  }
+  .shop-card-body p {
+    font-size: 0.88rem; line-height: 1.7;
+    color: var(--muted); margin-bottom: 1.25rem;
+  }
+  .shop-card-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(13,92,142,0.08);
+  }
+  .shop-price {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.3rem; font-weight: 700; color: var(--ocean);
+  }
+  .shop-price span {
+    font-size: 0.8rem; font-weight: 400;
+    color: var(--muted); font-family: 'Barlow', sans-serif;
+  }
+  .shop-btn {
+    background: var(--deep); color: var(--white);
+    border: none; border-radius: 3px; padding: 0.6rem 1.2rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.82rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    cursor: pointer; transition: background 0.2s;
+  }
+  .shop-btn:hover { background: var(--sky); }
+  .shop-note {
+    text-align: center; margin-top: 2.5rem;
+    font-size: 0.88rem; color: var(--muted);
+  }
+  .shop-note a { color: var(--sky); text-decoration: none; }
+  .shop-note a:hover { text-decoration: underline; }
+
+  /* ── REVIEW CTA CARD ── */
+  .review-cta-card {
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, rgba(13,92,142,0.04), rgba(78,201,225,0.06));
+    border: 2px dashed rgba(13,92,142,0.15) !important;
+  }
+  .review-cta-inner { text-align: center; padding: 1rem; }
+  .review-cta-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+  .review-cta-inner h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.15rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.05em;
+    color: var(--deep); margin-bottom: 0.5rem;
+  }
+  .review-cta-inner p {
+    font-size: 0.88rem; line-height: 1.7; color: var(--muted);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #02121f;
+    padding: 2.5rem 4rem;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+    border-top: 1px solid rgba(78,201,225,0.08);
+  }
+  footer p {
+    font-size: 0.82rem; color: rgba(248,251,253,0.35);
+  }
+  .footer-links {
+    display: flex; gap: 2rem; list-style: none;
+  }
+  .footer-links a {
+    font-size: 0.82rem; color: rgba(248,251,253,0.35);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--aqua); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .hero-content { padding: 0 1.5rem; }
+    .hero-stats { right: 1.5rem; gap: 1.5rem; }
+    .hero-stats .stat-num { font-size: 1.2rem; }
+    .services, .why, .process, .testimonials, .shop, .contact { padding: 5rem 1.5rem; }
+    .why-inner, .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+    footer { padding: 2rem 1.5rem; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">💧</div>
+    <span class="nav-logo-text">I <span>Water</span> & Wells</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">About</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#shop">Shop</a></li>
+    <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" class="mobile-link">Services</a>
+  <a href="#why" class="mobile-link">About</a>
+  <a href="#process" class="mobile-link">Process</a>
+  <a href="#testimonials" class="mobile-link">Reviews</a>
+  <a href="#shop" class="mobile-link">Shop</a>
+  <a href="#contact" class="mobile-cta mobile-link">Get a Free Quote</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="ripple"></div>
+  <div class="ripple"></div>
+  <div class="ripple"></div>
+
+  <!-- floating particles -->
+  <div class="drops" id="drops"></div>
+
+  <div class="hero-content">
+    <span class="hero-tag">Kamloops, BC Water Specialists</span>
+    <h1>Pure Water.<br><em>Deep Expertise.</em></h1>
+    <p>Everyone deserves clean, clear drinking water. Whether your source is a well, creek, or lake — I Water and Wells Inc. makes it as clean as a mountain stream.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Request a Free Quote</a>
+      <a href="tel:7785389148" class="btn-outline">📞 778-538-9148</a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">Kamloops</div>
+      <div class="stat-label">BC Based</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">Res &amp; Com</div>
+      <div class="stat-label">Residential &amp; Commercial</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">24/7</div>
+      <div class="stat-label">Emergency Service</div>
+    </div>
+  </div>
+
+  <div class="scroll-hint">Scroll</div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-header">
+    <span class="section-tag">What We Do</span>
+    <h2>Complete Water <em>Solutions</em></h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="service-icon">🔩</span>
+      <h3>Well Drilling</h3>
+      <p>Professional drilling for residential and commercial properties. We find and access reliable aquifers with precision equipment and decades of local expertise.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">⚙️</span>
+      <h3>Pump Installation & Repair</h3>
+      <p>Supply, install, and repair all types of water pumps. Fast response times for emergency breakdowns — we keep your water flowing 24/7.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🧪</span>
+      <h3>Water Testing</h3>
+      <p>Comprehensive water quality testing for bacteria, minerals, and contaminants. Know exactly what's in your water with certified lab analysis.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">💧</span>
+      <h3>Water Treatment</h3>
+      <p>Custom filtration, UV sterilization, and softening systems designed for your specific water chemistry and household needs.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🏗️</span>
+      <h3>Well Rehabilitation</h3>
+      <p>Restore aging or underperforming wells to full capacity. Video inspection, cleaning, and redevelopment services available.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">📋</span>
+      <h3>Consultation & Reports</h3>
+      <p>Hydrogeological reports, permit applications, and expert consultation for developers, municipalities, and homeowners.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why" id="why">
+  <div class="why-bg"></div>
+  <div class="why-inner">
+    <div class="why-left">
+      <div class="section-header">
+        <span class="section-tag">Why Choose Us</span>
+        <h2>Local Knowledge.<br><em>Proven Results.</em></h2>
+        <div class="section-divider"></div>
+      </div>
+      <p class="why-desc">I Water and Wells Inc. has been serving British Columbia with integrity and craftsmanship. We treat every job — big or small — with the same care we'd give our own property.</p>
+      <div class="why-cta">
+        <a href="tel:7785389148" class="btn-primary">Call Us Today</a>
+      </div>
+    </div>
+    <ul class="why-list">
+      <li class="why-item">
+        <div class="why-item-icon">🏅</div>
+        <div class="why-item-text">
+          <h4>Licensed & Insured</h4>
+          <p>Fully certified by BC's Water Supply Well Regulation. Your investment is protected with comprehensive insurance coverage.</p>
+        </div>
+      </li>
+      <li class="why-item">
+        <div class="why-item-icon">⚡</div>
+        <div class="why-item-text">
+          <h4>Fast Response</h4>
+          <p>Emergency services available. When you're without water, we prioritize getting you back up and running as quickly as possible.</p>
+        </div>
+      </li>
+      <li class="why-item">
+        <div class="why-item-icon">🗺️</div>
+        <div class="why-item-text">
+          <h4>Local BC Experts</h4>
+          <p>Deep knowledge of BC's geology and groundwater systems means we find water faster and drill smarter than out-of-province operators.</p>
+        </div>
+      </li>
+      <li class="why-item">
+        <div class="why-item-icon">💬</div>
+        <div class="why-item-text">
+          <h4>Transparent Pricing</h4>
+          <p>No hidden fees. You get a clear, detailed quote before any work begins — and we stick to it.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="section-header">
+    <span class="section-tag">How It Works</span>
+    <h2>Simple <em>Process,</em> Exceptional Results</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-num">01</div>
+      <div class="step-body">
+        <h3>Free Consultation</h3>
+        <p>Call or message us to describe your needs. We'll discuss your property, water goals, and give you an honest initial assessment — no charge, no obligation.</p>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">02</div>
+      <div class="step-body">
+        <h3>Site Assessment</h3>
+        <p>Our team visits your property to evaluate geology, existing infrastructure, and the best approach. We provide a detailed written quote within 48 hours.</p>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">03</div>
+      <div class="step-body">
+        <h3>Professional Installation</h3>
+        <p>Our licensed crew completes the work efficiently and cleanly. We handle all permits and documentation required by BC regulations.</p>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">04</div>
+      <div class="step-body">
+        <h3>Water Testing & Handover</h3>
+        <p>We test your water quality before handing over, walk you through your system, and leave you with full documentation. Your satisfaction is guaranteed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="section-header">
+    <span class="section-tag">Google Reviews</span>
+    <h2>What Our <em>Customers Say</em></h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="quote-mark">"</div>
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">Had Scott and Chris out today to replace an old, shallow well pump. They showed up on time, were quite personable, efficient and had it done quickly. Seemed very knowledgeable. Based on my experience today I would recommend them.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">JW</div>
+        <div>
+          <div class="author-name">Jim Ward</div>
+          <div class="author-location">Kamloops, BC · Google Review</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="quote-mark">"</div>
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">Fantastic service from start to finish. Scott and the team are true professionals who clearly care about the quality of their work and their customers. Highly recommended for any water system needs.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">AG</div>
+        <div>
+          <div class="author-name">Angela Greaves</div>
+          <div class="author-location">Kamloops, BC · Google Local Guide</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card review-cta-card">
+      <div class="review-cta-inner">
+        <div class="review-cta-icon">⭐</div>
+        <h3>Happy with our service?</h3>
+        <p>Leave us a review on Google — it helps other Kamloops families find clean water solutions.</p>
+        <a href="https://maps.google.com" target="_blank" class="btn-primary" style="margin-top:1.25rem; display:inline-block; font-size:0.85rem;">Leave a Google Review</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SHOP -->
+<section class="shop" id="shop">
+  <div class="section-header">
+    <span class="section-tag">Products & Services</span>
+    <h2>Our <em>Shop</em></h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="shop-grid">
+
+    <div class="shop-card">
+      <div class="shop-card-image">
+        💧
+        <span class="shop-card-badge">Popular</span>
+      </div>
+      <div class="shop-card-body">
+        <div class="shop-card-category">Water Treatment</div>
+        <h3>UV Sterilization System</h3>
+        <p>Kills 99.9% of bacteria and viruses in your water. Ideal for well, creek, and lake sources. Includes professional installation.</p>
+        <div class="shop-card-footer">
+          <div class="shop-price">Contact Us <span>for pricing</span></div>
+          <button class="shop-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get Quote</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="shop-card">
+      <div class="shop-card-image">🔩</div>
+      <div class="shop-card-body">
+        <div class="shop-card-category">Pumps</div>
+        <h3>Submersible Pump Supply & Install</h3>
+        <p>High-quality submersible pumps for residential and commercial wells. Supplied, installed, and warranted by our team.</p>
+        <div class="shop-card-footer">
+          <div class="shop-price">Contact Us <span>for pricing</span></div>
+          <button class="shop-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get Quote</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="shop-card">
+      <div class="shop-card-image">
+        🧪
+        <span class="shop-card-badge">Essential</span>
+      </div>
+      <div class="shop-card-body">
+        <div class="shop-card-category">Testing</div>
+        <h3>Full Water Quality Test</h3>
+        <p>Certified lab analysis for bacteria, minerals, pH, hardness, and contaminants. Know exactly what's in your water.</p>
+        <div class="shop-card-footer">
+          <div class="shop-price">Contact Us <span>for pricing</span></div>
+          <button class="shop-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get Quote</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="shop-card">
+      <div class="shop-card-image">🌊</div>
+      <div class="shop-card-body">
+        <div class="shop-card-category">Filtration</div>
+        <h3>Iron & Sediment Filter System</h3>
+        <p>Remove iron, manganese, and sediment from your water supply. Custom-sized for your household flow rate and water chemistry.</p>
+        <div class="shop-card-footer">
+          <div class="shop-price">Contact Us <span>for pricing</span></div>
+          <button class="shop-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get Quote</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="shop-card">
+      <div class="shop-card-image">
+        🏗️
+        <span class="shop-card-badge">New</span>
+      </div>
+      <div class="shop-card-body">
+        <div class="shop-card-category">Well Services</div>
+        <h3>Well Drilling Package</h3>
+        <p>Complete residential well drilling including site assessment, drilling, casing, and initial water test. Serving Kamloops and surrounding areas.</p>
+        <div class="shop-card-footer">
+          <div class="shop-price">Contact Us <span>for pricing</span></div>
+          <button class="shop-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get Quote</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="shop-card">
+      <div class="shop-card-image">⚙️</div>
+      <div class="shop-card-body">
+        <div class="shop-card-category">Maintenance</div>
+        <h3>Annual System Service Plan</h3>
+        <p>Keep your water system running perfectly year-round. Includes annual inspection, filter changes, and priority emergency response.</p>
+        <div class="shop-card-footer">
+          <div class="shop-price">Contact Us <span>for pricing</span></div>
+          <button class="shop-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get Quote</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <p class="shop-note">💳 Payments coming soon · For now, <a href="#contact">contact us</a> for a free quote on any product or service.</p>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-bg"></div>
+  <div class="contact-inner">
+    <div class="contact-info">
+      <div class="section-header">
+        <span class="section-tag">Get In Touch</span>
+        <h2>Request a <em>Free Quote</em></h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="contact-details">
+        <div class="contact-item">
+          <div class="contact-item-icon">📞</div>
+          <a href="tel:7785389148">778-538-9148</a>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">✉️</div>
+          <a href="mailto:scott.duncan@innovacon.net">scott.duncan@innovacon.net</a>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📍</div>
+          <span>448 Gleneagles Dr, Kamloops, BC</span>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">🕐</div>
+          <span>Mon–Sat: 7am–7pm · Emergency: 24/7</span>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">✅</div>
+          <span>Licensed · Insured · BC Regulated</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" placeholder="John">
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" placeholder="Smith">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="778-555-0100">
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" placeholder="john@email.com">
+      </div>
+      <div class="form-group">
+        <label>Service Needed</label>
+        <select>
+          <option value="">Select a service...</option>
+          <option>Well Drilling</option>
+          <option>Pump Installation / Repair</option>
+          <option>Water Testing</option>
+          <option>Water Treatment</option>
+          <option>Well Rehabilitation</option>
+          <option>Consultation / Report</option>
+          <option>Other / Not Sure</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Tell us about your project</label>
+        <textarea placeholder="Property location, current issue, timeline..."></textarea>
+      </div>
+      <button class="form-submit">Send My Request →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 I Water and Wells Inc. · Kamloops, BC · All Rights Reserved</p>
+  <ul class="footer-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="tel:7785389148">778-538-9148</a></li>
+  </ul>
+</footer>
+
+<script>
+  // Generate floating water drop particles
+  const container = document.getElementById('drops');
+  for (let i = 0; i < 25; i++) {
+    const drop = document.createElement('div');
+    drop.className = 'drop';
+    drop.style.left = Math.random() * 100 + '%';
+    drop.style.animationDuration = (8 + Math.random() * 12) + 's';
+    drop.style.animationDelay = (Math.random() * 10) + 's';
+    drop.style.width = drop.style.height = (1 + Math.random() * 2) + 'px';
+    container.appendChild(drop);
+  }
+
+  // Smooth scroll for nav links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // Hamburger mobile menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    });
+  });
+  document.querySelector('.form-submit').addEventListener('click', function() {
+    this.textContent = '✓ Request Sent!';
+    this.style.background = 'linear-gradient(135deg, #2a9a4a, #4ec97a)';
+    setTimeout(() => {
+      this.textContent = 'Send My Request →';
+      this.style.background = '';
+    }, 3000);
+  });
+</script>
+</body>
+</html>
